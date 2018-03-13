@@ -3,6 +3,7 @@ import "./App.css";
 
 import HomePage from "./components/homePage";
 import AboutPage from "./components/about/aboutPage";
+import HeaderComponet from "./components/common/header";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
     }
     return (
       <div>
+        <HeaderComponet />
         <Child />
       </div>
     );
