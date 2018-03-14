@@ -1,44 +1,28 @@
 import React, { Component } from "react";
 import AuthorApi from "../../api/authorApi";
 
+import AuthorList from "./authorList";
+
 export default class AuthorPage extends Component {
   state = {
     authors: []
   };
 
-  componentWillMount() {
+  componentDidMount() {
+    // if (!this.isMounted) {
     this.setState({
       authors: AuthorApi.getAllAuthors()
     });
+    // }
   }
 
   render() {
-    const createAuthorRow = author => {
-      return (
-        <tr key={author.id}>
-          <td>
-            <a href={`/#authors/${author.id}`}>{author.id}</a>
-          </td>
-          <td>
-            {author.firstName} {author.lastName}
-          </td>
-        </tr>
-      );
-    };
+    const { authors } = this.state;
 
     return (
       <div className="container">
         <h1>Authors</h1>
-
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>{this.state.authors.map(resp => createAuthorRow(resp))}</tbody>
-        </table>
+        <AuthorList authors={authors} />
       </div>
     );
   }
