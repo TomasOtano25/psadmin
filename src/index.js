@@ -9,13 +9,6 @@ import "jquery/dist/jquery.min.js"; //imn
 import "popper.js/dist/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 
-// Ruta #
-const render = () => {
-  let route = window.location.hash.substr(1);
-  ReactDOM.render(<App route={route} />, document.getElementById("root"));
-};
-
-window.addEventListener("hashchange", render);
-render();
+ReactDOM.render(<App />, document.getElementById("root"));
 
 registerServiceWorker();
