@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AuthorApi from "../../api/authorApi";
-
+import AuthorList from "../authors/authorList";
 import { Link } from "react-router-dom";
 
 export default class AuthorPage extends Component {
@@ -15,34 +15,16 @@ export default class AuthorPage extends Component {
   }
 
   render() {
-    const createAuthorRow = author => {
-      return (
-        <tr key={author.id}>
-          <td>
-            <a href={`/#authors/${author.id}`}>{author.id}</a>
-          </td>
-          <td>
-            {author.firstName} {author.lastName}
-          </td>
-        </tr>
-      );
-    };
+    const { authors } = this.state;
 
     return (
       <div className="container">
         <h1>Authors</h1>
-        <Link to="/author" className="btn btn-secondary">
+        <Link to="/author" className="btn btn-secondary mb-2">
           Add author
         </Link>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>{this.state.authors.map(resp => createAuthorRow(resp))}</tbody>
-        </table>
+
+        <AuthorList authors={authors} />
       </div>
     );
   }

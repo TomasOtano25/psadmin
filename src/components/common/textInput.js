@@ -2,24 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class TextInput extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
-    error: PropTypes.string
-  };
-
   render() {
-    let wrapperClass = "form-group";
+    let wrapperClass = "form-control";
     if (this.props.error && this.props.error.length > 0) {
-      wrapperClass += ` has-error`;
+      wrapperClass += ` is-invalid`;
     }
     return (
-      <div className={wrapperClass}>
+      <div className="form-group">
         <label htmlFor={this.props.name}>{this.props.text}</label>
         <input
-          className="form-control"
+          className={wrapperClass}
           type="text"
           name={this.props.name}
           ref={this.props.name}
@@ -27,9 +19,17 @@ export default class TextInput extends Component {
           onChange={this.props.onChange}
           value={this.props.value}
         />
-        <div className="input">{this.props.error}</div>
+        <div className="invalid-feedback">{this.props.error}</div>
         <br />
       </div>
     );
   }
 }
+
+TextInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  error: PropTypes.string
+};

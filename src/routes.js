@@ -13,6 +13,7 @@ const Routes = () => {
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/authors" component={AuthorPage} />
+      <Route path="/author/:id" component={ManageAuthorsPage} />
       <Route path="/author" component={ManageAuthorsPage} />
       <Redirect from="/about-us" to="/about" />
       <Redirect from="/awthurs" to="/authors" />
