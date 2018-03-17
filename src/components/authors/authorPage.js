@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import AuthorApi from "../../api/authorApi";
 
+import { Link } from "react-router-dom";
+
 export default class AuthorPage extends Component {
   state = {
     authors: []
@@ -29,7 +31,9 @@ export default class AuthorPage extends Component {
     return (
       <div className="container">
         <h1>Authors</h1>
-
+        <Link to="/author" className="btn btn-secondary">
+          Add author
+        </Link>
         <table className="table">
           <thead>
             <tr>
