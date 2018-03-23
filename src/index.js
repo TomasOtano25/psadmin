@@ -11,6 +11,10 @@ import "bootstrap/dist/js/bootstrap.min.js";
 //Toastr
 import "toastr/build/toastr.css";
 
+import InitializeActions from "./actions/initializeActions";
+
+InitializeActions.initApp();
+
 ReactDOM.render(<App />, document.getElementById("root"));
 
 registerServiceWorker();
